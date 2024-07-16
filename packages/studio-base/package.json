@@ -162,7 +162,7 @@
     "tss-react": "4.9.3",
     "typescript": "5.3.3",
     "use-debounce": "10.0.0",
-    "use-immer": "0.9.0",
+    "use-immer": "0.10.0",
     "uuid": "9.0.1",
     "webpack": "5.90.0",
     "zustand": "4.4.1"
