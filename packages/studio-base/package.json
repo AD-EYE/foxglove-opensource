@@ -100,7 +100,7 @@
     "cytoscape-dagre": "2.5.0",
     "esbuild-loader": "2.21.0",
     "eventemitter3": "5.0.1",
-    "fake-indexeddb": "4.0.2",
+    "fake-indexeddb": "6.0.0",
     "fork-ts-checker-webpack-plugin": "9.0.2",
     "fuzzysort": "2.0.4",
     "fzf": "0.5.2",
