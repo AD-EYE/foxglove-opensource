@@ -2584,7 +2584,7 @@ __metadata:
     "@types/react-hover-observer": "workspace:*"
     "@types/react-transition-group": ^4.4.8
     "@types/react-virtualized": 9.21.29
-    "@types/react-window": ^1.8.5
+    "@types/react-window": ^1.8.8
     "@types/sanitize-html": 2.9.3
     "@types/seedrandom": 3.0.8
     "@types/shallowequal": 1.1.5
@@ -2653,7 +2653,7 @@ __metadata:
     react-transition-group: 4.4.5
     react-use: 17.4.2
     react-virtualized: 9.22.5
-    react-window: 1.8.9
+    react-window: 1.8.10
     readable-stream: 4.4.2
     reselect: 4.1.8
     sanitize-html: 2.11.0
@@ -6400,12 +6400,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-window@npm:^1.8.5":
-  version: 1.8.5
-  resolution: "@types/react-window@npm:1.8.5"
+"@types/react-window@npm:^1.8.8":
+  version: 1.8.8
+  resolution: "@types/react-window@npm:1.8.8"
   dependencies:
     "@types/react": "*"
-  checksum: 5f519e1402300d11b6e6595223feb6499f3227e38da166cbc565773cd7f71862abcf855b7835d391b5119fcfacdfba79d73a965b45f60a293fc1ff25986319ed
+  checksum: 253c9d6e0c942f34633edbddcbc369324403c42458ff004457c5bd5972961d8433a909c0cc1a89c918063d5eb85ecbdd774142af2555fae61f4ceb3ba9884b5a
   languageName: node
   linkType: hard
 
@@ -17359,16 +17359,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-window@npm:1.8.9":
-  version: 1.8.9
-  resolution: "react-window@npm:1.8.9"
+"react-window@npm:1.8.10":
+  version: 1.8.10
+  resolution: "react-window@npm:1.8.10"
   dependencies:
     "@babel/runtime": ^7.0.0
     memoize-one: ">=3.1.1 <6"
   peerDependencies:
     react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: cefa232f4f37269d292529ef15780fb108123d6bb5beee19eeac657e75cf8d4664be66f2da04baf0cb1bc64c5ab3d83a88199c3358f023b78940acd37b0673b2
+  checksum: e8830f32e3ad4bf91af9cdc5cead84148c7694ce6abd9fdb447fb609da6cd4bbd0bbc75ff985f78828f4bbbd3ba4cbc98235cc9c056b5e5787578518f7fafbb9
   languageName: node
   linkType: hard
 
