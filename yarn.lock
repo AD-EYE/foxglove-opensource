@@ -2579,7 +2579,7 @@ __metadata:
     "@types/moment-duration-format": 2.2.6
     "@types/nearley": 2.11.5
     "@types/ramda": 0.29.4
-    "@types/react": 18.2.23
+    "@types/react": 18.3.3
     "@types/react-dom": 18.2.7
     "@types/react-hover-observer": "workspace:*"
     "@types/react-transition-group": ^4.4.8
@@ -2638,7 +2638,7 @@ __metadata:
     notistack: 3.0.1
     path-browserify: 1.0.1
     ramda: 0.29.0
-    react: 18.2.0
+    react: 18.3.1
     react-colorful: 5.6.1
     react-dnd: 16.0.1
     react-dnd-html5-backend: 16.0.1
@@ -2694,7 +2694,7 @@ __metadata:
     clean-webpack-plugin: 4.0.0
     copy-webpack-plugin: 11.0.0
     html-webpack-plugin: 5.6.0
-    react: 18.2.0
+    react: 18.3.1
     react-dom: 18.2.0
     tss-react: 4.9.3
     webpack: 5.90.0
@@ -2724,8 +2724,8 @@ __metadata:
     "@mui/material": 5.15.6
     "@mui/x-data-grid": 6.18.7
     "@storybook/react": 7.6.10
-    "@types/react": 18.2.23
-    react: 18.2.0
+    "@types/react": 18.3.3
+    react: 18.3.1
   languageName: unknown
   linkType: soft
 
@@ -6409,7 +6409,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:18.2.23, @types/react@npm:>=16":
+"@types/react@npm:*, @types/react@npm:>=16":
   version: 18.2.23
   resolution: "@types/react@npm:18.2.23"
   dependencies:
@@ -6417,6 +6417,16 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: efb9d1ed1940c0e7ba08a21ffba5e266d8dbbb8fe618cfb97bc902dfc96385fdd8189e3f7f64b4aa13134f8e61947d60560deb23be151253c3a97b0d070897ca
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:18.3.3":
+  version: 18.3.3
+  resolution: "@types/react@npm:18.3.3"
+  dependencies:
+    "@types/prop-types": "*"
+    csstype: ^3.0.2
+  checksum: c63d6a78163244e2022b01ef79b0baec4fe4da3475dc4a90bb8accefad35ef0c43560fd0312e5974f92a0f1108aa4d669ac72d73d66396aa060ea03b5d2e3873
   languageName: node
   linkType: hard
 
@@ -8011,12 +8021,12 @@ __metadata:
     "@foxglove/studio-base": "workspace:*"
     "@foxglove/tsconfig": 2.0.0
     "@pmmmwh/react-refresh-webpack-plugin": 0.5.11
-    "@types/react": 18.2.23
+    "@types/react": 18.3.3
     "@types/react-dom": 18.2.7
     clean-webpack-plugin: 4.0.0
     html-webpack-plugin: 5.6.0
     mathjs: 11.11.1
-    react: 18.2.0
+    react: 18.3.1
     react-dom: 18.2.0
     webpack: 5.90.0
     webpack-dev-server: 4.15.1
@@ -17372,12 +17382,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.2.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
+"react@npm:18.3.1":
+  version: 18.3.1
+  resolution: "react@npm:18.3.1"
   dependencies:
     loose-envify: ^1.1.0
-  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
+  checksum: a27bcfa8ff7c15a1e50244ad0d0c1cb2ad4375eeffefd266a64889beea6f6b64c4966c9b37d14ee32d6c9fcd5aa6ba183b6988167ab4d127d13e7cb5b386a376
   languageName: node
   linkType: hard
 
