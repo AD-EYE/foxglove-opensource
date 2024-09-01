@@ -2674,7 +2674,7 @@ __metadata:
     use-immer: 0.9.0
     uuid: 9.0.1
     webpack: 5.90.0
-    zustand: 4.4.1
+    zustand: 4.5.5
   languageName: unknown
   linkType: soft
 
@@ -20194,12 +20194,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.0":
-  version: 1.2.0
-  resolution: "use-sync-external-store@npm:1.2.0"
+"use-sync-external-store@npm:1.2.2":
+  version: 1.2.2
+  resolution: "use-sync-external-store@npm:1.2.2"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 5c639e0f8da3521d605f59ce5be9e094ca772bd44a4ce7322b055a6f58eeed8dda3c94cabd90c7a41fb6fa852210092008afe48f7038792fd47501f33299116a
+  checksum: fe07c071c4da3645f112c38c0e57beb479a8838616ff4e92598256ecce527f2888c08febc7f9b2f0ce2f0e18540ba3cde41eb2035e4fafcb4f52955037098a81
   languageName: node
   linkType: hard
 
@@ -21065,14 +21065,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zustand@npm:4.4.1":
-  version: 4.4.1
-  resolution: "zustand@npm:4.4.1"
+"zustand@npm:4.5.5":
+  version: 4.5.5
+  resolution: "zustand@npm:4.5.5"
   dependencies:
-    use-sync-external-store: 1.2.0
+    use-sync-external-store: 1.2.2
   peerDependencies:
     "@types/react": ">=16.8"
-    immer: ">=9.0"
+    immer: ">=9.0.6"
     react: ">=16.8"
   peerDependenciesMeta:
     "@types/react":
@@ -21081,7 +21081,7 @@ __metadata:
       optional: true
     react:
       optional: true
-  checksum: 80acd0fbf633782996642802c8692bbb80ae5c80a8dff4c501b88250acd5ccd468fbc6398bdce198475a25e3839c91385b81da921274f33ffb5c2d08c3eab400
+  checksum: 654e47959970bc66bbf2ae80fced7e556dd488e9ee54eb678330cb036ecc7184f4b8c2cae273be28022533622c54ab6339bf3fe30d19236367c5c251b6c6679a
   languageName: node
   linkType: hard
 
