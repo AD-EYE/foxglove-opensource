@@ -47,7 +47,7 @@
     "@foxglove/wasm-bz2": "0.1.1",
     "@foxglove/wasm-lz4": "1.0.2",
     "@foxglove/ws-protocol": "0.7.2",
-    "@mcap/core": "2.0.2",
+    "@mcap/core": "2.1.5",
     "@mui/icons-material": "5.15.5",
     "@mui/material": "5.15.6",
     "@popperjs/core": "^2.11.8",
