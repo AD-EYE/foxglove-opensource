@@ -18,6 +18,7 @@ import MultiProvider from "./components/MultiProvider";
 import PlayerManager from "./components/PlayerManager";
 import SendNotificationToastAdapter from "./components/SendNotificationToastAdapter";
 import StudioToastProvider from "./components/StudioToastProvider";
+import { UserScriptStateProvider } from "./context/UserScriptStateContext";
 import CurrentLayoutProvider from "./providers/CurrentLayoutProvider";
 import PanelCatalogProvider from "./providers/PanelCatalogProvider";
 import { LaunchPreference } from "./screens/LaunchPreference";
@@ -48,6 +49,7 @@ export function StudioApp(): JSX.Element {
     /* eslint-disable react/jsx-key */
     <TimelineInteractionStateProvider />,
     <CurrentLayoutProvider />,
+    <UserScriptStateProvider />,
     <PlayerManager playerSources={dataSources} />,
     <EventsProvider />,
     /* eslint-enable react/jsx-key */

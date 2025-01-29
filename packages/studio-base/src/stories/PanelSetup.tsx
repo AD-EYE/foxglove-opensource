@@ -28,6 +28,7 @@ import { useTranslation } from "react-i18next";
 import { Mosaic, MosaicNode, MosaicWindow } from "react-mosaic-component";
 import { createStore } from "zustand";
 
+import { useShallowMemo } from "@foxglove/hooks";
 import {
   MessageEvent,
   ParameterValue,
@@ -50,8 +51,14 @@ import {
   PanelStateStore,
   usePanelStateStore,
 } from "@foxglove/studio-base/context/PanelStateContext";
+import {
+  UserScriptStateProvider,
+  UserScriptStore,
+  useUserScriptState,
+} from "@foxglove/studio-base/context/UserScriptStateContext";
 import { GlobalVariables } from "@foxglove/studio-base/hooks/useGlobalVariables";
 import * as panels from "@foxglove/studio-base/panels";
+import { Diagnostic, UserScriptLog } from "@foxglove/studio-base/players/UserScriptPlayer/types";
 import {
   AdvertiseOptions,
   PlayerStateActiveData,
@@ -89,6 +96,9 @@ export type Fixture = {
   globalVariables?: GlobalVariables;
   layout?: MosaicNode<string>;
   userScripts?: UserScripts;
+  userScriptDiagnostics?: { [scriptId: string]: readonly Diagnostic[] };
+  userScriptLogs?: { [scriptId: string]: readonly UserScriptLog[] };
+  userScriptRosLib?: string;
   savedProps?: SavedProps;
   publish?: (request: PublishPayload) => void;
   setPublishers?: (publisherId: string, advertisements: AdvertiseOptions[]) => void;
@@ -224,6 +234,8 @@ const defaultFetchAsset: ComponentProps<typeof MockMessagePipelineProvider>["fet
   };
 };
 
+const selectUserScriptActions = (store: UserScriptStore) => store.actions;
+
 function UnconnectedPanelSetup(props: UnconnectedProps): JSX.Element | ReactNull {
   const { t } = useTranslation("panels");
   const mockPanelCatalog = useMemo(
@@ -240,12 +252,28 @@ function UnconnectedPanelSetup(props: UnconnectedProps): JSX.Element | ReactNull
   }));
 
   const actions = useCurrentLayoutActions();
+  const { setUserScriptDiagnostics, addUserScriptLogs, setUserScriptRosLib } =
+    useUserScriptState(selectUserScriptActions);
+  const userScriptActions = useShallowMemo({
+    setUserScriptDiagnostics,
+    addUserScriptLogs,
+    setUserScriptRosLib,
+  });
+
   const [initialized, setInitialized] = useState(false);
   useLayoutEffect(() => {
     if (initialized) {
       return;
     }
-    const { globalVariables, userScripts, layout, savedProps } = props.fixture ?? {};
+    const {
+      globalVariables,
+      userScripts,
+      layout,
+      userScriptDiagnostics,
+      userScriptLogs,
+      userScriptRosLib,
+      savedProps,
+    } = props.fixture ?? {};
     if (globalVariables) {
       actions.overwriteGlobalVariables(globalVariables);
     }
@@ -255,13 +283,26 @@ function UnconnectedPanelSetup(props: UnconnectedProps): JSX.Element | ReactNull
     if (layout != undefined) {
       actions.changePanelLayout({ layout });
     }
+    if (userScriptDiagnostics) {
+      for (const [scriptId, diagnostics] of Object.entries(userScriptDiagnostics)) {
+        userScriptActions.setUserScriptDiagnostics(scriptId, diagnostics);
+      }
+    }
+    if (userScriptLogs) {
+      for (const [scriptId, logs] of Object.entries(userScriptLogs)) {
+        userScriptActions.addUserScriptLogs(scriptId, logs);
+      }
+    }
+    if (userScriptRosLib != undefined) {
+      userScriptActions.setUserScriptRosLib(userScriptRosLib);
+    }
     if (savedProps) {
       actions.savePanelConfigs({
         configs: Object.entries(savedProps).map(([id, config]) => ({ id, config })),
       });
     }
     setInitialized(true);
-  }, [initialized, props.fixture, actions]);
+  }, [initialized, props.fixture, actions, userScriptActions]);
 
   const {
     frame = {},
@@ -347,17 +388,19 @@ export default function PanelSetup(props: Props): JSX.Element {
   const theme = useTheme();
   return (
     <WorkspaceContextProvider disablePersistenceForStorybook>
-      <TimelineInteractionStateProvider>
-        <MockCurrentLayoutProvider onAction={props.onLayoutAction}>
-          <PanelStateContextProvider initialState={props.fixture?.panelState}>
-            <MockExtensionCatalogProvider messageConverters={props.fixture?.messageConverters}>
-              <ThemeProvider isDark={theme.palette.mode === "dark"}>
-                <UnconnectedPanelSetup {...props} />
-              </ThemeProvider>
-            </MockExtensionCatalogProvider>
-          </PanelStateContextProvider>
-        </MockCurrentLayoutProvider>
-      </TimelineInteractionStateProvider>
+      <UserScriptStateProvider>
+        <TimelineInteractionStateProvider>
+          <MockCurrentLayoutProvider onAction={props.onLayoutAction}>
+            <PanelStateContextProvider initialState={props.fixture?.panelState}>
+              <MockExtensionCatalogProvider messageConverters={props.fixture?.messageConverters}>
+                <ThemeProvider isDark={theme.palette.mode === "dark"}>
+                  <UnconnectedPanelSetup {...props} />
+                </ThemeProvider>
+              </MockExtensionCatalogProvider>
+            </PanelStateContextProvider>
+          </MockCurrentLayoutProvider>
+        </TimelineInteractionStateProvider>
+      </UserScriptStateProvider>
     </WorkspaceContextProvider>
   );
 }

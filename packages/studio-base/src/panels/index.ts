@@ -22,6 +22,7 @@ import tableThumbnail from "./Table/thumbnail.png";
 import teleopThumbnail from "./Teleop/thumbnail.png";
 import threeDeeRenderThumbnail from "./ThreeDeeRender/thumbnail.png";
 import topicGraphThumbnail from "./TopicGraph/thumbnail.png";
+import userScriptEditorThumbnail from "./UserScriptEditor/thumbnail.png";
 import variableSliderThumbnail from "./VariableSlider/thumbnail.png";
 import diagnosticStatusThumbnail from "./diagnostics/thumbnails/diagnostic-status.png";
 import diagnosticSummaryThumbnail from "./diagnostics/thumbnails/diagnostic-summary.png";
@@ -156,6 +157,13 @@ export const getBuiltin: (t: TFunction<"panels">) => PanelInfo[] = (t) => [
     description: t("dataSourceInfoDescription"),
     thumbnail: dataSourceInfoThumbnail,
     module: async () => await import("./DataSourceInfo"),
+  },
+  {
+    title: t("userScripts"),
+    type: "NodePlayground",
+    description: t("userScriptsDescription"),
+    thumbnail: userScriptEditorThumbnail,
+    module: async () => await import("./UserScriptEditor"),
   },
   {
     title: t("variableSlider"),

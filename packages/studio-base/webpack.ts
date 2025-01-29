@@ -4,6 +4,7 @@
 
 import { ESBuildMinifyPlugin } from "esbuild-loader";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import MonacoWebpackPlugin from "monaco-editor-webpack-plugin";
 import path from "path";
 import ReactRefreshTypescript from "react-refresh-typescript";
 import ts from "typescript";
@@ -232,6 +233,14 @@ export function makeConfig(
         contextRegExp: /moment$/,
       }),
 
+      new MonacoWebpackPlugin({
+        // available options: https://github.com/Microsoft/monaco-editor-webpack-plugin#options
+        languages: ["typescript", "javascript"],
+
+        // Output filenames should include content hashes in order to avoid caching issues with
+        // downstream users of the studio-base package.
+        filename: "[name].worker.[contenthash].js",
+      }),
       new ForkTsCheckerWebpackPlugin({
         typescript: {
           configFile: tsconfigPath,

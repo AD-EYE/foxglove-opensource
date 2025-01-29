@@ -12,41 +12,74 @@
 //   You may not use this file except in compliance with the License.
 
 import { useSnackbar } from "notistack";
-import { PropsWithChildren, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { useMountedState } from "react-use";
+import {
+  PropsWithChildren,
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from "react";
+import { useLatest, useMountedState } from "react-use";
 
 import { useWarnImmediateReRender } from "@foxglove/hooks";
 import Logger from "@foxglove/log";
 import { Immutable } from "@foxglove/studio";
 import { MessagePipelineProvider } from "@foxglove/studio-base/components/MessagePipeline";
 import { useAnalytics } from "@foxglove/studio-base/context/AnalyticsContext";
-import { useAppContext } from "@foxglove/studio-base/context/AppContext";
+// import { useAppContext } from "@foxglove/studio-base/context/AppContext";
+import {
+  LayoutState,
+  useCurrentLayoutSelector,
+} from "@foxglove/studio-base/context/CurrentLayoutContext";
 import { ExtensionCatalogContext } from "@foxglove/studio-base/context/ExtensionCatalogContext";
+import { usePerformance } from "@foxglove/studio-base/context/PerformanceContext";
 import PlayerSelectionContext, {
   DataSourceArgs,
   IDataSourceFactory,
   PlayerSelection,
 } from "@foxglove/studio-base/context/PlayerSelectionContext";
+import {
+  UserScriptStore,
+  useUserScriptState,
+} from "@foxglove/studio-base/context/UserScriptStateContext";
+import { GlobalVariables } from "@foxglove/studio-base/hooks/useGlobalVariables";
 import useIndexedDbRecents, { RecentRecord } from "@foxglove/studio-base/hooks/useIndexedDbRecents";
 import AnalyticsMetricsCollector from "@foxglove/studio-base/players/AnalyticsMetricsCollector";
 import {
   TopicAliasFunctions,
   TopicAliasingPlayer,
 } from "@foxglove/studio-base/players/TopicAliasingPlayer/TopicAliasingPlayer";
+import UserScriptPlayer from "@foxglove/studio-base/players/UserScriptPlayer";
 import { Player } from "@foxglove/studio-base/players/types";
+import { UserScripts } from "@foxglove/studio-base/types/panels";
 
 const log = Logger.getLogger(__filename);
+
+const EMPTY_USER_NODES: UserScripts = Object.freeze({});
+const EMPTY_GLOBAL_VARIABLES: GlobalVariables = Object.freeze({});
 
 type PlayerManagerProps = {
   playerSources: readonly IDataSourceFactory[];
 };
 
+const userScriptsSelector = (state: LayoutState) =>
+  state.selectedLayout?.data?.userNodes ?? EMPTY_USER_NODES;
+const globalVariablesSelector = (state: LayoutState) =>
+  state.selectedLayout?.data?.globalVariables ?? EMPTY_GLOBAL_VARIABLES;
+
+const selectUserScriptActions = (store: UserScriptStore) => store.actions;
+
 export default function PlayerManager(props: PropsWithChildren<PlayerManagerProps>): JSX.Element {
   const { children, playerSources } = props;
+  const perfRegistry = usePerformance();
 
   useWarnImmediateReRender();
 
-  const { wrapPlayer } = useAppContext();
+  const userScriptActions = useUserScriptState(selectUserScriptActions);
+
+  // const { wrapPlayer } = useAppContext();
 
   const isMounted = useMountedState();
 
@@ -55,8 +88,24 @@ export default function PlayerManager(props: PropsWithChildren<PlayerManagerProp
 
   const [basePlayer, setBasePlayer] = useState<Player | undefined>();
 
+  const userScripts = useCurrentLayoutSelector(userScriptsSelector);
+  const globalVariables = useCurrentLayoutSelector(globalVariablesSelector);
+
   const { recents, addRecent } = useIndexedDbRecents();
 
+  // We don't want to recreate the player when the these variables change, but we do want to
+  // initialize it with the right order, so make a variable for its initial value we can use in the
+  // dependency array to the player useMemo.
+  //
+  // Updating the player with new values in handled by effects below the player useMemo or within
+  // the message pipeline
+  const globalVariablesRef = useLatest(globalVariables);
+
+  // Initialize the topic aliasing player with the alias functions and global variables we
+  // have at first load. Any changes in alias functions caused by dynamically loaded
+  // extensions or new variables have to be set separately because we can only construct
+  // the wrapping player once since the underlying player doesn't allow us set a new
+  // listener after the initial listener is set.
   const topicAliasPlayer = useMemo(() => {
     if (!basePlayer) {
       return undefined;
@@ -68,6 +117,7 @@ export default function PlayerManager(props: PropsWithChildren<PlayerManagerProp
   // Update the alias functions when they change. We do not need to re-render the player manager
   // since nothing in the local state has changed.
   const extensionCatalogContext = useContext(ExtensionCatalogContext);
+
   useEffect(() => {
     // Stable empty alias functions if we don't have any
     const emptyAliasFunctions: Immutable<TopicAliasFunctions> = [];
@@ -90,8 +140,21 @@ export default function PlayerManager(props: PropsWithChildren<PlayerManagerProp
       return undefined;
     }
 
-    return wrapPlayer(topicAliasPlayer);
-  }, [topicAliasPlayer, wrapPlayer]);
+    const userScriptPlayer = new UserScriptPlayer(
+      topicAliasPlayer,
+      userScriptActions,
+      perfRegistry,
+    );
+    userScriptPlayer.setGlobalVariables(globalVariablesRef.current);
+    return userScriptPlayer;
+  }, [globalVariablesRef, topicAliasPlayer, userScriptActions, perfRegistry]);
+
+  //   const wrappedPlayer = wrapPlayer(topicAliasPlayer);
+  //   wrappedPlayer.setGlobalVariables(globalVariablesRef.current);
+  //   return wrappedPlayer;
+  // }, [topicAliasPlayer, wrapPlayer, globalVariablesRef]);
+
+  useLayoutEffect(() => void player?.setUserScripts(userScripts), [player, userScripts]);
 
   const { enqueueSnackbar } = useSnackbar();
 
