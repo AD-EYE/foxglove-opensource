@@ -2637,7 +2637,7 @@ __metadata:
     nearley-loader: 2.0.0
     notistack: 3.0.1
     path-browserify: 1.0.1
-    ramda: 0.29.0
+    ramda: 0.32.0
     react: 18.2.0
     react-colorful: 5.6.1
     react-dnd: 16.0.1
@@ -16801,6 +16801,13 @@ __metadata:
   version: 0.29.0
   resolution: "ramda@npm:0.29.0"
   checksum: 9ab26c06eb7545cbb7eebcf75526d6ee2fcaae19e338f165b2bf32772121e7b28192d6664d1ba222ff76188ba26ab307342d66e805dbb02c860560adc4d5dd57
+  languageName: node
+  linkType: hard
+
+"ramda@npm:0.32.0":
+  version: 0.32.0
+  resolution: "ramda@npm:0.32.0"
+  checksum: d26ce9796b60e89496ba3663d2e3d7f7eb0cb885c3949bc4fb0353b27b4409c25af4006c88f6970888d743ca16a0d8b616bcf8aaa353dc09b830f6f90cddb7b1
   languageName: node
   linkType: hard
 
