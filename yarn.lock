@@ -2627,7 +2627,7 @@ __metadata:
     lodash-es: 4.17.21
     mathjs: 11.11.1
     memoize-weak: 1.0.2
-    meshoptimizer: 0.19.0
+    meshoptimizer: 1.0.1
     moize: 6.1.6
     moment: 2.29.4
     moment-duration-format: 2.3.2
@@ -14803,10 +14803,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"meshoptimizer@npm:0.19.0":
-  version: 0.19.0
-  resolution: "meshoptimizer@npm:0.19.0"
-  checksum: a0f19b0e51e80ee3e3ff72ee706a46bac84d501791716c837620d05e4a9398086b59d86d99a2caad15da08063da427d6b695a0398f9eb058b8d4f6f7db62e989
+"meshoptimizer@npm:1.0.1":
+  version: 1.0.1
+  resolution: "meshoptimizer@npm:1.0.1"
+  checksum: 464597746fee252d457bee7303d6146a0a7a719a005b61e3375477840239bfd286ce695db23674ed63ab11021577e45c9e1d5b0b3d2376304134b8301c501d2c
   languageName: node
   linkType: hard
 
