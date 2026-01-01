@@ -11580,7 +11580,7 @@ __metadata:
     semver: 7.5.4
     storybook: 7.6.10
     ts-node: 10.9.2
-    ts-unused-exports: 10.0.1
+    ts-unused-exports: 11.0.1
     tslib: 2.6.2
     typescript: 5.3.3
     webpack: 5.90.0
@@ -19500,9 +19500,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-unused-exports@npm:10.0.1":
-  version: 10.0.1
-  resolution: "ts-unused-exports@npm:10.0.1"
+"ts-unused-exports@npm:11.0.1":
+  version: 11.0.1
+  resolution: "ts-unused-exports@npm:11.0.1"
   dependencies:
     chalk: ^4.0.0
     tsconfig-paths: ^3.9.0
@@ -19513,7 +19513,7 @@ __metadata:
       optional: false
   bin:
     ts-unused-exports: bin/ts-unused-exports
-  checksum: d5248b4c1c3b970b594db4955582dbdc1c56852a61f69fd18e680e87bad4df879a052c84c0ca6e1d1ea4f63eab39c1a9beff23e8e38e4fcdefc5c03e83487256
+  checksum: c539c147b99d5baa84969d546c0621b8db7e45c33b87f04ef2cbbbd238ad6161dfcce610ae7bd3a274b01b2f5d88b4a5e4fcb41a4526b29b8e884647d5bf2f69
   languageName: node
   linkType: hard
 
