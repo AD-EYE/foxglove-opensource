@@ -2579,7 +2579,7 @@ __metadata:
     "@types/moment-duration-format": 2.2.6
     "@types/nearley": 2.11.5
     "@types/ramda": 0.29.4
-    "@types/react": 18.2.23
+    "@types/react": 19.2.7
     "@types/react-dom": 18.2.7
     "@types/react-hover-observer": "workspace:*"
     "@types/react-transition-group": ^4.4.8
@@ -2638,7 +2638,7 @@ __metadata:
     notistack: 3.0.1
     path-browserify: 1.0.1
     ramda: 0.29.0
-    react: 18.2.0
+    react: 19.2.3
     react-colorful: 5.6.1
     react-dnd: 16.0.1
     react-dnd-html5-backend: 16.0.1
@@ -2694,7 +2694,7 @@ __metadata:
     clean-webpack-plugin: 4.0.0
     copy-webpack-plugin: 11.0.0
     html-webpack-plugin: 5.6.0
-    react: 18.2.0
+    react: 19.2.3
     react-dom: 18.2.0
     tss-react: 4.9.3
     webpack: 5.90.0
@@ -2724,8 +2724,8 @@ __metadata:
     "@mui/material": 5.15.6
     "@mui/x-data-grid": 6.18.7
     "@storybook/react": 7.6.10
-    "@types/react": 18.2.23
-    react: 18.2.0
+    "@types/react": 19.2.7
+    react: 19.2.3
   languageName: unknown
   linkType: soft
 
@@ -6409,7 +6409,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:18.2.23, @types/react@npm:>=16":
+"@types/react@npm:*, @types/react@npm:>=16":
   version: 18.2.23
   resolution: "@types/react@npm:18.2.23"
   dependencies:
@@ -6417,6 +6417,15 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: efb9d1ed1940c0e7ba08a21ffba5e266d8dbbb8fe618cfb97bc902dfc96385fdd8189e3f7f64b4aa13134f8e61947d60560deb23be151253c3a97b0d070897ca
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:19.2.7":
+  version: 19.2.7
+  resolution: "@types/react@npm:19.2.7"
+  dependencies:
+    csstype: ^3.2.2
+  checksum: b1f4c9a45862ea392b9ead060a5b5730b4c41b21fde097db35e639a8a0978460468d8da87f47226230bd4681d6de48ffee695595540084a8a849dde027c66a46
   languageName: node
   linkType: hard
 
@@ -8011,12 +8020,12 @@ __metadata:
     "@foxglove/studio-base": "workspace:*"
     "@foxglove/tsconfig": 2.0.0
     "@pmmmwh/react-refresh-webpack-plugin": 0.5.11
-    "@types/react": 18.2.23
+    "@types/react": 19.2.7
     "@types/react-dom": 18.2.7
     clean-webpack-plugin: 4.0.0
     html-webpack-plugin: 5.6.0
     mathjs: 11.11.1
-    react: 18.2.0
+    react: 19.2.3
     react-dom: 18.2.0
     webpack: 5.90.0
     webpack-dev-server: 4.15.1
@@ -9339,6 +9348,13 @@ __metadata:
   version: 3.1.2
   resolution: "csstype@npm:3.1.2"
   checksum: e1a52e6c25c1314d6beef5168da704ab29c5186b877c07d822bd0806717d9a265e8493a2e35ca7e68d0f5d472d43fac1cdce70fd79fd0853dff81f3028d857b5
+  languageName: node
+  linkType: hard
+
+"csstype@npm:^3.2.2":
+  version: 3.2.3
+  resolution: "csstype@npm:3.2.3"
+  checksum: cb882521b3398958a1ce6ca98c011aec0bde1c77ecaf8a1dd4db3b112a189939beae3b1308243b2fe50fc27eb3edeb0f73a5a4d91d928765dc6d5ecc7bda92ee
   languageName: node
   linkType: hard
 
@@ -17372,12 +17388,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.2.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
-  dependencies:
-    loose-envify: ^1.1.0
-  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
+"react@npm:19.2.3":
+  version: 19.2.3
+  resolution: "react@npm:19.2.3"
+  checksum: 506e369ae13cb46b7f303c0201aadf856642f482cdf5b1c3730c3a6d1762fd5a3ae1dd31196a4686bfbbe56456dcd0c48a4656c75cbcb45620e3028c54789ae9
   languageName: node
   linkType: hard
 
