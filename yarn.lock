@@ -2358,6 +2358,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@foxglove/message-definition@npm:0.5.0":
+  version: 0.5.0
+  resolution: "@foxglove/message-definition@npm:0.5.0"
+  checksum: 79c3c3acf91020096b19c6d7602e10211ee45afb17b8d70a4d93794aade5dd4929b5c7a127b3f58c2230358414c410128c1f46e1daa4e8ea937b36b9c235bfce
+  languageName: node
+  linkType: hard
+
 "@foxglove/message-definition@npm:^0.2.0":
   version: 0.2.0
   resolution: "@foxglove/message-definition@npm:0.2.0"
@@ -2453,7 +2460,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@foxglove/rosmsg-msgs-common@npm:3.1.0, @foxglove/rosmsg-msgs-common@npm:^3.0.0":
+"@foxglove/rosmsg-msgs-common@npm:3.2.3":
+  version: 3.2.3
+  resolution: "@foxglove/rosmsg-msgs-common@npm:3.2.3"
+  dependencies:
+    "@foxglove/message-definition": 0.5.0
+    "@foxglove/rosmsg": ^5.0.5
+  checksum: de381db3463e3ca777bb8355317c2d4927a0717342811f6904e0fd2618da44e3fe0d13fe3548ee15a8a1461d59c6521d2d262a9e4884169885713dbe64ab1118
+  languageName: node
+  linkType: hard
+
+"@foxglove/rosmsg-msgs-common@npm:^3.0.0":
   version: 3.1.0
   resolution: "@foxglove/rosmsg-msgs-common@npm:3.1.0"
   dependencies:
@@ -2492,6 +2509,16 @@ __metadata:
   bin:
     gendeps2: bin/gendeps2
   checksum: b982a6d03e3552b24fc4188e3cf08daddf2054b16c39073068749df2e754d26622ce7548ea0bf9dc424db2b1cec5e76f02e9cb9823e5a4da10b672d6606118f2
+  languageName: node
+  linkType: hard
+
+"@foxglove/rosmsg@npm:^5.0.5":
+  version: 5.0.5
+  resolution: "@foxglove/rosmsg@npm:5.0.5"
+  dependencies:
+    "@foxglove/message-definition": 0.5.0
+    md5-typescript: ^1.0.5
+  checksum: ab3c2ce832f95f092fbc255830da66e0ef1405b9dd7d63d67bd9070ddaaaea6e50246f3dd8f08539fcc336fc5554023aa442350aa0e1f60413b4ffc13667a2c0
   languageName: node
   linkType: hard
 
@@ -2541,7 +2568,7 @@ __metadata:
     "@foxglove/rosbag2-web": 4.1.1
     "@foxglove/roslibjs": 0.0.3
     "@foxglove/rosmsg": 4.2.2
-    "@foxglove/rosmsg-msgs-common": 3.1.0
+    "@foxglove/rosmsg-msgs-common": 3.2.3
     "@foxglove/rosmsg-serialization": 2.0.2
     "@foxglove/rosmsg2-serialization": 2.0.3
     "@foxglove/rostime": 1.1.2
